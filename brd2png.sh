@@ -10,29 +10,33 @@ BLANK_FR4=#3c4a42
 HOLES=#000000
 SILK=#ffffff
 
-$EAGLE -X -d GERBER_RS274X -o "outline.ger" $1 Dimension Milling
-gerbv --border=0 -f#ffffff -x svg -o outline.svg outline.ger
+$EAGLE -X -N -d GERBER_RS274X -o "outline.ger" $1 Dimension Milling
+cat outline.ger | sed s/ADD10C,0.0000/ADD10C,0.0100/ > outline1.ger
+gerbv --border=3 -f#ffffff -x svg -o mask.svg outline1.ger
+rsvg-convert --dpi-x=$DPI --dpi-y=$DPI --format=png --output=mask.png mask.svg
+
+gerbv --border=3 -f#ffffff -x svg -o outline.svg outline.ger
 rsvg-convert --dpi-x=$DPI --dpi-y=$DPI --format=png --output=outline.png outline.svg
 
-$EAGLE -X -d GERBER_RS274X -o "top.ger" $1 Dimension Top Pads Vias
-gerbv --border=0 -f#ffffff -x svg -o top.svg top.ger
+$EAGLE -X -N -d GERBER_RS274X -o "top.ger" $1 Dimension Top Pads Vias
+gerbv --border=3 -f#ffffff -x svg -o top.svg top.ger
 rsvg-convert --dpi-x=$DPI --dpi-y=$DPI --format=png --output=top.png top.svg
 
-$EAGLE -X -d GERBER_RS274X -o "stop.ger" $1 Dimension tStop
-gerbv --border=0 -f#ffffff -x svg -o stop.svg stop.ger
+$EAGLE -X -N -d GERBER_RS274X -o "stop.ger" $1 Dimension tStop
+gerbv --border=3 -f#ffffff -x svg -o stop.svg stop.ger
 rsvg-convert --dpi-x=$DPI --dpi-y=$DPI --format=png --output=stop.png stop.svg
 
-$EAGLE -X -d GERBER_RS274X -o "silk.ger" $1 Dimension tPlace tNames
-gerbv --border=0 -f#ffffff -x svg -o silk.svg silk.ger
+$EAGLE -X -N -d GERBER_RS274X -o "silk.ger" $1 Dimension tPlace tNames
+gerbv --border=3 -f#ffffff -x svg -o silk.svg silk.ger
 rsvg-convert --dpi-x=$DPI --dpi-y=$DPI --format=png --output=silk.png silk.svg
 
 
-$EAGLE -X -d EXCELLON -o "drills.ger" $1 Drills Holes
-gerbv --border=0 -f#ffffff -x svg -o drills.svg drills.ger outline.ger
+$EAGLE -X -N -d EXCELLON -o "drills.ger" $1 Drills Holes
+gerbv --border=3 -f#ffffff -x svg -o drills.svg drills.ger outline.ger
 rsvg-convert --dpi-x=$DPI --dpi-y=$DPI --format=png --output=drills.png drills.svg
 
-rm outline.ger top.ger stop.ger silk.ger drills.ger
-rm outline.svg top.svg stop.svg silk.svg drills.svg
+rm outline1.ger outline.ger top.ger stop.ger silk.ger drills.ger
+rm mask.svg outline.svg top.svg stop.svg silk.svg drills.svg
 rm outline.gpi top.gpi stop.gpi silk.gpi  
 rm drills.dri
 
@@ -61,6 +65,8 @@ rm silk_cropped.png
 
 gm convert  -fill "$COVERED_FR4" -opaque none outline.png background.png
 rm outline.png
+gm convert -fill blue -opaque none -draw "fill black ; color 0,0 floodfill" -transparent white -transparent blue mask.png mask_colored.png
+rm mask.png
 
 gm convert -fill "$HOLES" -opaque white drills.png drills_colored.png
 rm drills.png
@@ -73,6 +79,8 @@ gm composite -compose Over  blank_fr4_colored.png tmp2.png tmp3.png
 rm blank_fr4_colored.png tmp2.png
 gm composite -compose Over  silk_colored.png tmp3.png tmp4.png
 rm silk_colored.png tmp3.png
-gm composite -compose Over  drills_colored.png tmp4.png $2
+gm composite -compose Over  drills_colored.png tmp4.png tmp5.png
 rm drills_colored.png tmp4.png
+gm composite -compose Over  mask_colored.png tmp5.png $2
+rm mask_colored.png tmp5.png
 
