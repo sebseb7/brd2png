@@ -1,6 +1,6 @@
 #!/bin/sh
 
-EAGLE=/Applications/EAGLE-6.2.2/EAGLE.app/Contents/MacOS/EAGLE
+EAGLE=/Applications/EAGLE-6.4.0/EAGLE.app/Contents/MacOS/EAGLE
 DPI=1200
 
 COVERED_COPPER=#095935
