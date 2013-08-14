@@ -15,8 +15,8 @@ simple shell script rendering eagle .brd files to images
 
 Example 1:
 
-![eagle](https://raw.github.com//sebseb7/brd2png/raw/master/sample/eagle.png)
-![rendered](https://raw.github.com//sebseb7/brd2png/raw/master/sample/rendered.png)
+![eagle](https://raw.github.com/sebseb7/brd2png/raw/master/sample/eagle.png)
+![rendered](https://raw.github.com/sebseb7/brd2png/raw/master/sample/rendered.png)
 
 ####These two examples show typical mistakes not easiely visible in eagle: 
 
@@ -26,8 +26,8 @@ Example 2:
 
 Sometimes one does not notice text over holes or pads:
 
-![comp1a](https://raw.github.com//sebseb7/brd2png/raw/master/sample/comp1a.png)
-![comp1b](https://raw.github.com//sebseb7/brd2png/raw/master/sample/comp1b.png)
+![comp1a](https://raw.github.com/sebseb7/brd2png/raw/master/sample/comp1a.png)
+![comp1b](https://raw.github.com/sebseb7/brd2png/raw/master/sample/comp1b.png)
 
 - - - 
 
