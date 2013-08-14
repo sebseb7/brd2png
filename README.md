@@ -35,7 +35,7 @@ Example 3:
 
 If you use the stop layer for text, it will be barely visible if you postioning it over areas with no copper. In eagle it sill looks good
 
-![comp2a](https://raw.github.com//sebseb7/brd2png/raw/master/sample/comp2a.png)
-![comp2b](https://raw.github.com//sebseb7/brd2png/raw/master/sample/comp2b.png)
+![comp2a](https://raw.github.com/sebseb7/brd2png/raw/master/sample/comp2a.png)
+![comp2b](https://raw.github.com/sebseb7/brd2png/raw/master/sample/comp2b.png)
 
 
