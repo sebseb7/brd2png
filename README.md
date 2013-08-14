@@ -15,7 +15,7 @@ simple shell script rendering eagle .brd files to images
 
 Example 1:
 
-![eagle](https://raw.github.com/sebseb7/brd2pngmaster/sample/eagle.png)
+![eagle](https://raw.github.com/sebseb7/brd2png/master/sample/eagle.png)
 ![rendered](https://raw.github.com/sebseb7/brd2png/master/sample/rendered.png)
 
 ####These two examples show typical mistakes not easiely visible in eagle: 
