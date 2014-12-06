@@ -33,7 +33,7 @@ Sometimes one does not notice text over holes or pads:
 
 Example 3:
 
-If you use the stop layer for text, it will be barely visible if you postioning it over areas with no copper. In eagle it sill looks good
+If you use the stop layer for text, it will be barely visible if you postioning it over areas with no copper. In eagle it still looks good.
 
 ![comp2a](https://raw.github.com/sebseb7/brd2png/master/sample/comp2a.png)
 ![comp2b](https://raw.github.com/sebseb7/brd2png/master/sample/comp2b.png)
